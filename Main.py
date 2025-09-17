@@ -38,6 +38,22 @@ def crearBus():
     buses.append(bus)
     print(f"Bus creado con número de serie: {bus.getNumeroSerie()}")
 
+def plazasLibres():
+    print("Buses disponibles:")
+    for idx, bus in enumerate(buses):
+        print(f"{idx + 1}. Bus número de serie: {bus.getNumeroSerie()}")
+    bus_idx = int(input("Seleccione el número de serie del bus: ")) - 1
+    bus = buses[bus_idx]
+    print(f"Plazas libres: {bus.getPlazasLibres()}")
+
+def plazasOcupadas():
+    print("Buses disponibles:")
+    for idx, bus in enumerate(buses):
+        print(f"{idx + 1}. Bus número de serie: {bus.getNumeroSerie()}")
+    bus_idx = int(input("Seleccione el número de serie del bus: ")) - 1
+    bus = buses[bus_idx]
+    print(f"Plazas libres: {bus.getPlazasOcupadas()}")
+
 def crearCliente():
     nombre = input("Ingrese el nombre del cliente: ")
     apellido = input("Ingrese el apellido del cliente: ")
