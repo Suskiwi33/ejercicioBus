@@ -92,3 +92,5 @@ def devolverBillete(clientes):
 
     cliente.devolverBillete(billete)
     print(f"Billete devuelto para {cliente.getNombre()} en el bus {billete.getBus().getNumeroSerie()}")
+
+main()
