@@ -83,6 +83,7 @@ def comprarBillete(clientes, buses):
 
     billete = Billete(cliente, bus)
     cliente.agregarBillete(billete)
+    bus.ocuparPlaza()
     print(f"Billete comprado para {cliente.getNombre()} en el bus {bus.getNumeroSerie()}")
 
 def devolverBillete(clientes):
@@ -107,6 +108,7 @@ def devolverBillete(clientes):
     billete = cliente.getBilletes()[billete_idx]
 
     cliente.devolverBillete(billete)
+    billete.getBus().liberarPlaza()
     print(f"Billete devuelto para {cliente.getNombre()} en el bus {billete.getBus().getNumeroSerie()}")
 
 main()
