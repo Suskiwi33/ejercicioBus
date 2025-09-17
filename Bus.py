@@ -6,6 +6,7 @@ class Bus:
 
     def __init__(self, numero_serie, num_plazas):
         self.__numero_serie = numero_serie
+        self.__num_plazas_totales = num_plazas
         Bus.__plazas_libres = num_plazas
         Bus.__contador_buses += 1
 
@@ -24,3 +25,6 @@ class Bus:
     def ocuparPlaza(cls):
         cls.__plazas_libres -= 1
         cls.__plazas_ocupadas += 1
+
+    def getPlazasTotales(self):
+        return self.__num_plazas_totales
