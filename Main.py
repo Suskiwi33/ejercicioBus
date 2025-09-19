@@ -40,7 +40,7 @@ def crearBus():
     
     numero_plazas = input("Ingrese el número de plazas del bus: ")
     if numero_plazas.isdigit():
-        bus = Bus(numero_plazas)
+        bus = Bus(int(numero_plazas))
         __buses.append(bus)
         print(f"Bus creado con número de serie: {bus.getNumSerie()}\n")
     else:
@@ -74,11 +74,13 @@ def comprarBillete(clientes, buses):
     print("Clientes disponibles:")
     for idx, cliente in enumerate(clientes):
         print(f"{idx + 1}. {cliente.getNombre()} {cliente.getApellido()}")
-    cliente_idx = int(
-        input("Seleccione el número del cliente que quiere comprar el billete: ")) - 1
+    cliente_idx = input("Seleccione el número del cliente que quiere comprar el billete: ")
 
     if cliente_idx.isdigit():
-        cliente = clientes[cliente_idx]
+        
+        cliente_idx_int = int(cliente_idx) - 1
+        cliente = clientes[cliente_idx_int]
+
         print("Buses disponibles:")
         for idx, bus in enumerate(buses):
             print(f"{idx + 1}. Bus número de serie: {bus.getNumSerie()}")
@@ -113,7 +115,7 @@ def devolverBillete(clientes):
     print("Billetes del cliente:")
     for idx, billete in enumerate(cliente.getBilletes()):
         print(
-            f"{idx + 1}. Billete en bus número de serie: {billete.getBus().getNumeroSerie()}")
+            f"{idx + 1}. Billete en bus número de serie: {billete.getBus().getNumSerie()}")
     billete_idx = int(
         input("Seleccione el num serie del billete que quiere devolver: ")) - 1
     billete = cliente.getBilletes()[billete_idx]
