@@ -31,3 +31,6 @@ class Bus:
     @classmethod
     def getNumSerie(cls):
         return cls.__numero_serie
+    
+    def getPlazasTotales(cls):
+        return cls.__plazas_libres + cls.__plazas_ocupadas

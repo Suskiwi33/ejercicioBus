@@ -104,10 +104,17 @@ def devolverBillete(clientes):
     print("Clientes disponibles:")
     for idx, cliente in enumerate(clientes):
         print(f"{idx + 1}. {cliente.getNombre()} {cliente.getApellido()} \n")
-    cliente_idx = int(
-        input("Seleccione el número del cliente que quiere devolver el billete: ")) - 1
-    cliente = clientes[cliente_idx]
 
+    cliente_idx = input("Seleccione el número del cliente que quiere devolver el billete: ")
+    
+    if cliente_idx.isdigit():
+        cliente_idx_int = int(cliente_idx) - 1
+        cliente = clientes[cliente_idx_int]
+
+    else:
+        print(f"Error: El numero del cliente no es un entero \n")
+        return
+    
     if not cliente.getBilletes():
         print(f"Este cliente no tiene billetes para devolver. \n")
         return
@@ -115,7 +122,7 @@ def devolverBillete(clientes):
     print("Billetes del cliente:")
     for idx, billete in enumerate(cliente.getBilletes()):
         print(
-            f"{idx + 1}. Billete en bus número de serie: {billete.getBus().getNumSerie()}")
+            f"{idx + 1}. Billete en bus número de serie: {billete.getNumSerie()}")
     billete_idx = int(
         input("Seleccione el num serie del billete que quiere devolver: ")) - 1
     billete = cliente.getBilletes()[billete_idx]
@@ -135,11 +142,16 @@ def estadoVenta():
             print(f"{idx + 1}. Bus número de serie: {bus.getNumSerie()}")
         bus_idx = int(input("Seleccione el número de serie del bus: ")) - 1
 
-        if bus_idx in __buses.getNumSerie():
-            bus = __buses[bus_idx]
-            print(
-                f"Plazas totales -> {bus.getPlazasTotales()}, plazas libres -> {plazasLibres(bus)}, billetes vendidos {plazasOcupadas(bus)}")
-        else:
-            print("Ese bus no existe, escoge otro")
+        for bus in __buses:
+                print(
+                    f"Plazas totales -> {bus.getPlazasTotales()}, plazas libres -> {plazasLibres(bus)}, billetes vendidos {plazasOcupadas(bus)}\n")
+                return
+
+        # if bus_idx in __buses.getNumSerie():
+        #     bus = __buses[bus_idx]
+        #     print(
+        #         f"Plazas totales -> {bus.getPlazasTotales()}, plazas libres -> {plazasLibres(bus)}, billetes vendidos {plazasOcupadas(bus)}")
+        # else:
+        #     print("Ese bus no existe, escoge otro")
 
 main()

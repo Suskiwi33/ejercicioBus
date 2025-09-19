@@ -7,7 +7,7 @@ class Billete:
         self.__cliente = cliente
         self.__bus = bus
 
-    def getNumSerie():
+    def getNumSerie(self):
         return Billete.__num_serie        
 
     def setCliente(self, cliente):
