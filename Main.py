@@ -5,6 +5,7 @@ from Cliente import Cliente
 __clientes = []
 __buses = []
 
+
 def main():
     while True:
         opcion = menu()
@@ -36,7 +37,7 @@ def menu():
 
 
 def crearBus():
-    
+
     numero_plazas = input("Ingrese el número de plazas del bus: ")
     if numero_plazas.isdigit():
         bus = Bus(int(numero_plazas))
@@ -73,7 +74,8 @@ def comprarBillete(clientes, buses):
     print("Clientes disponibles:")
     for idx, cliente in enumerate(clientes):
         print(f"{idx + 1}. {cliente.getNombre()} {cliente.getApellido()}")
-    cliente_idx = input("Seleccione el número del cliente que quiere comprar el billete: ")
+    cliente_idx = input(
+        "Seleccione el número del cliente que quiere comprar el billete: ")
 
     if cliente_idx.isdigit():
         if int(cliente_idx) < 1 or int(cliente_idx) > len(clientes):
@@ -88,7 +90,7 @@ def comprarBillete(clientes, buses):
         bus_idx = input("Seleccione el número de serie del bus: ")
         if bus_idx.isdigit():
             if int(bus_idx) < 1 or int(bus_idx) > len(buses):
-                print(f"Error: El numero del cliente no es valido \n")
+                print(f"Error: El numero del bus no es valido \n")
                 return
             bus_idx = int(bus_idx) - 1
             bus = buses[bus_idx]
@@ -116,20 +118,21 @@ def devolverBillete(clientes):
     for idx, cliente in enumerate(clientes):
         print(f"{idx + 1}. {cliente.getNombre()} {cliente.getApellido()} \n")
 
-    cliente_idx = input("Seleccione el número del cliente que quiere devolver el billete: ")
-    
+    cliente_idx = input(
+        "Seleccione el número del cliente que quiere devolver el billete: ")
+
     if cliente_idx.isdigit():
         if int(cliente_idx) < 1 or int(cliente_idx) > len(clientes):
             print(f"Error: El numero del cliente no es valido \n")
             return
-        
+
         cliente_idx_int = int(cliente_idx) - 1
         cliente = clientes[cliente_idx_int]
 
     else:
         print(f"Error: El numero del cliente no es un entero \n")
         return
-    
+
     if not cliente.getBilletes():
         print(f"Error: Este cliente no tiene billetes para devolver. \n")
         return
@@ -137,9 +140,10 @@ def devolverBillete(clientes):
     print("Billetes del cliente:")
     for idx, billete in enumerate(cliente.getBilletes()):
         print(
-            f"{idx + 1}. Billete en bus número de serie: {billete.getBus().getNumSerie()}")
-        
-    billete_idx = input("Seleccione el num serie del billete que quiere devolver: ")
+            f"{idx + 1}. Billete en el bus numero {billete.getBus().getNumSerie()} con numero de serie: {billete.getNumSerie()}")
+
+    billete_idx = input(
+        "Seleccione el numero de serie del billete que quiere devolver: ")
     if billete_idx.isdigit():
         if int(billete_idx) < 1 or int(billete_idx) > len(cliente.getBilletes()):
             print(f"Error: El numero del billete no es valido \n")
@@ -180,5 +184,6 @@ def estadoVenta():
             f"plazas libres -> {plazasLibres(bus)}, "
             f"billetes vendidos -> {plazasOcupadas(bus)}\n"
         )
+
 
 main()
