@@ -6,8 +6,17 @@ class Bus:
         self.__numero_serie = Bus.__contador_buses
         self.__plazas_libres = num_plazas
         self.__plazas_ocupadas = 0
+        self.__billetes = []
 
+    def getListaBilletes(self):
+        return self.__billetes
     
+    def agregarBillete(self, billete):
+        self.__billetes.append(billete)
+    
+    def eliminarBillete(self, billete):
+        self.__billetes.remove(billete)
+
     def getPlazasLibres(self):
         return self.__plazas_libres
     

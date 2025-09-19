@@ -2,11 +2,10 @@ class Billete:
 
     __num_serie = 0
     
-    def __init__(self, cliente, bus):
+    def __init__(self, cliente):
         Billete.__num_serie += 1
         self.__num_serie = Billete.__num_serie
         self.__cliente = cliente
-        self.__bus = bus
 
     def getNumSerie(self):
         return self.__num_serie        
@@ -16,6 +15,3 @@ class Billete:
 
     def getCliente(self):
         return self.__cliente
-
-    def getBus(self):
-        return self.__bus

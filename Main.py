@@ -100,8 +100,9 @@ def comprarBillete(clientes, buses):
         if bus.getPlazasLibres() == 0:
             print(f"Error: No hay plazas libres en este bus. \n")
             return
-        billete = Billete(cliente, bus)
+        billete = Billete(cliente)
         cliente.agregarBillete(billete)
+        bus.agregarBillete(billete)
         bus.ocuparPlaza()
         print(
             f"Billete comprado para {cliente.getNombre()} en el bus {bus.getNumSerie()} \n")
@@ -140,7 +141,7 @@ def devolverBillete(clientes):
     print("Billetes del cliente:")
     for idx, billete in enumerate(cliente.getBilletes()):
         print(
-            f"{idx + 1}. Billete en el bus numero {billete.getBus().getNumSerie()} con numero de serie: {billete.getNumSerie()}")
+            f"{idx + 1}. Billete con numero de serie: {billete.getNumSerie()}")
 
     billete_idx = input(
         "Seleccione el numero de serie del billete que quiere devolver: ")
@@ -154,10 +155,17 @@ def devolverBillete(clientes):
         print(f"Error: El numero del billete tiene que ser un número entero positivo \n")
         return
 
+    bus = None
+    for bus in __buses:
+        if bus.getListaBilletes().__contains__(billete):
+            bus = bus
+            break
+
     cliente.devolverBillete(billete)
-    billete.getBus().liberarPlaza()
+    bus.eliminarBillete(billete)
+    bus.liberarPlaza()
     print(
-        f"Billete devuelto para {cliente.getNombre()} en el bus {billete.getBus().getNumSerie()} \n")
+        f"Billete devuelto para {cliente.getNombre()} \n")
 
 
 def estadoVenta():
