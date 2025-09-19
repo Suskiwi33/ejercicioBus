@@ -44,7 +44,7 @@ def crearBus():
         __buses.append(bus)
         print(f"Bus creado con número de serie: {bus.getNumSerie()}\n")
     else:
-        print(f"Error: El numero de plazas tiene que ser un número entero \n")
+        print(f"Error: El numero de plazas tiene que ser un número entero positivo\n")
 
 
 def plazasLibres(bus):
@@ -95,7 +95,7 @@ def comprarBillete(clientes, buses):
             bus_idx = int(bus_idx) - 1
             bus = buses[bus_idx]
         else:
-            print(f"Error: El numero del bus tiene que ser un número entero \n")
+            print(f"Error: El numero del bus tiene que ser un número entero positivo \n")
             return
         if bus.getPlazasLibres() == 0:
             print(f"Error: No hay plazas libres en este bus. \n")
@@ -151,7 +151,7 @@ def devolverBillete(clientes):
         billete_idx = int(billete_idx) - 1
         billete = cliente.getBilletes()[billete_idx]
     else:
-        print(f"Error: El numero del billete tiene que ser un número entero \n")
+        print(f"Error: El numero del billete tiene que ser un número entero positivo \n")
         return
 
     cliente.devolverBillete(billete)
@@ -170,7 +170,7 @@ def estadoVenta():
 
         bus_idx = input("\nSeleccione el número de serie del bus: ")
         if not bus_idx.isdigit():
-            print(f"\nError: El numero del bus tiene que ser un número entero \n")
+            print(f"\nError: El numero del bus tiene que ser un número entero positivo \n")
             return
         bus_idx = int(bus_idx) - 1
         if bus_idx < 0 or bus_idx >= len(__buses):
