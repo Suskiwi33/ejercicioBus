@@ -3,12 +3,13 @@ class Billete:
     __num_serie = 0
     
     def __init__(self, cliente, bus):
-        Billete.__num_serie =+ 1
+        Billete.__num_serie += 1
+        self.__num_serie = Billete.__num_serie
         self.__cliente = cliente
         self.__bus = bus
 
     def getNumSerie(self):
-        return Billete.__num_serie        
+        return self.__num_serie        
 
     def setCliente(self, cliente):
         self.__cliente = cliente
